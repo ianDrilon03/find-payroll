@@ -12,8 +12,6 @@ export function protectedRoutesMiddlware(next: NextMiddleware) {
     const isAuthenticated = req.cookies.get('auth')
     const { pathname } = req.nextUrl
 
-    console.log(isAuthenticated)
-
     if (response) {
       if (!isAuthenticated && pathname.startsWith('/backend')) {
         return NextResponse.redirect(new URL('/auth/sign-in', req.url))
